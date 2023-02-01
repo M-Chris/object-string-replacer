@@ -1,0 +1,12 @@
+{
+  "name": "object-string-replacer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["string", "replacement", "object", "token", "extraction", "utility"],
+  "author": "Chris Mohrhauser",
+  "license": "ISC"
+}
