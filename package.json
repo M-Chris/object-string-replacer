@@ -7,6 +7,7 @@
     "type": "git",
     "url": "https://github.com/M-Chris/object-string-replacer.git"
   },
+  "homepage": "https://m-chris.github.io/object-string-replacer/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
