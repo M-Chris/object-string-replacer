@@ -1,6 +1,6 @@
 # object-string-replacer
 
-No need for a massive template libraries anymore, this is less than < 9kb!
+No need for a massive template libraries anymore, this is less than < 9kb with 0 dependencies!
 
 Here's a set of functions for manipulating strings and objects, in a simple effective way; for use with templating, strings from the DB etc.. It includes functionality for extracting keys from a string, getting values from a complex object using a path, and replacing tokens in a string using data from an object. 
 
