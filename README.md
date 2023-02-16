@@ -20,10 +20,6 @@ npm install object-string-replacer
 ```
 **Once the package is installed, you can use it in your code by importing it:**
 ```
-const { getValueFromPath, replaceTokens, extractKeys } = require('object-string-replacer');
-```
-**or, if you are using ECMAScript Modules:**
-```
 import { getValueFromPath, replaceTokens, extractKeys } from 'object-string-replacer';
 ```
 
@@ -31,6 +27,35 @@ import { getValueFromPath, replaceTokens, extractKeys } from 'object-string-repl
 
 # Extracting Keys, Getting Values, and Replacing Tokens
 This is a set of functions for extracting keys from a string, getting values from a complex object using a path, and replacing tokens in a string using data from an object.
+
+
+
+## Replacing Tokens in a String using Data from an Object
+This function takes a string and an object and replaces the tokens in the string with the values from the object.
+
+**Example:**
+```
+const templateString = 'Hello {{person.name}}, you live at {{person.address.street}}, {{person.address.city}}, {{person.address.state}}.';
+console.log(replaceTokens(templateString, data));
+```
+**Output:** `'Hello John Doe, you live at 123 Main St, Anytown, NY.'`
+
+
+
+
+## Using Fallback Tokens for Missing Keys with || or Option
+This function takes a string, an object, and a fallback object and replaces the tokens in the string with the values from the object. If the token is not found in the object, it will use the value from the fallback object.
+
+**Example:**
+```
+const str = 'Hello {{fullName || friend}}. How are you today?';
+const tokens = { name: 'John' };
+const fallbackTokens = { friend: 'Jane' };
+
+console.log(replaceTokens(str, tokens, fallbackTokens));
+```
+**Output:** `"Hello Jane. How are you today?"`
+
 
 
 
@@ -43,6 +68,7 @@ const inputString = 'This is a {{template}} string with {{keys}} that need to be
 console.log(extractKeys(inputString));
 ```
 **Output:** `['template', 'keys', 'replaced']`
+
 
 
 
@@ -72,49 +98,3 @@ console.log(getValueFromPath('colors[1]', data));
 ```
 **Output:** `'green'`
 
-
-
-## Replacing Tokens in a String using Data from an Object
-This function takes a string and an object and replaces the tokens in the string with the values from the object.
-
-**Example:**
-```
-const templateString = 'Hello {{person.name}}, you live at {{person.address.street}}, {{person.address.city}}, {{person.address.state}}.';
-console.log(replaceTokens(templateString, data));
-```
-**Output:** `'Hello John Doe, you live at 123 Main St, Anytown, NY.'`
-
-
-
-## Using Fallback Tokens for Missing Keys
-This function takes a string, an object, and a fallback object and replaces the tokens in the string with the values from the object. If the token is not found in the object, it will use the value from the fallback object.
-
-**Example:**
-```
-const fallbackData = {
-    person: {
-        address: {
-            city: 'Anywhere',
-            state: 'NA',
-        },
-    },
-};
-const templateStringFB = 'Hello {{person.name}}, you live at {{person.address.street}}, {{person.address.city}}, {{person.address.state}}.';
-console.log(replaceTokens(templateStringFB, {}, fallbackData));
-```
-**Output:** `'Hello , you live at , Anywhere, NA.'`
-
-
-
-## Using Fallback Tokens for Missing Keys with || or Option
-This function takes a string, an object, and a fallback object and replaces the tokens in the string with the values from the object. If the token is not found in the object, it will use the value from the fallback object.
-
-**Example:**
-```
-const str2 = 'Hello {{fullName || friend}}. How are you today?';
-const tokens2 = { name: 'John' };
-const fallbackTokens2 = { friend: 'Jane' };
-
-console.log(replaceTokens(str2, tokens2, fallbackTokens2));
-```
-**Output:** `"Hello Jane. How are you today?"`
