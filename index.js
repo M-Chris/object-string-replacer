@@ -106,4 +106,4 @@ const getValueFromPath = (path, obj) => {
 };
 
 
-export { extractKeys, replaceTokens, getValueFromPath };
+module.exports = { extractKeys, replaceTokens, getValueFromPath };
